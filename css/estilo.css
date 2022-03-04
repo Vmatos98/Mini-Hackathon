@@ -1,0 +1,17 @@
+.all{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Do not repeat the image */
+    background-size: cover; 
+    
+}
+.all li{
+    font-size: 40px;
+    font-weight: 600;
+    color: red;
+}
