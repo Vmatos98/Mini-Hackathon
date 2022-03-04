@@ -2,9 +2,15 @@ const key =  "b5419f679f98edf4ad4be4d55d04c894";
 let lat ;
 let long;
 function obterData(lat, long){
-    if(lat=== ""){
+    const url = `http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&appid=${key}`
+    const promise = axios.get(url);
+    promise.then(imprimirData)
+}
+
+function obterDataClick(){
+
     long = document.querySelector(".long").value;
-    lat = document.querySelector(".lat").value;}
+    lat = document.querySelector(".lat").value;
     const url = `http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&appid=${key}`
     const promise = axios.get(url);
     promise.then(imprimirData)
