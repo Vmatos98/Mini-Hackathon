@@ -1,9 +1,10 @@
 const key =  "b5419f679f98edf4ad4be4d55d04c894";
-let lat = 0;
+let lat ;
 let long;
 function obterData(lat, long){
+    if(lat=== ""){
     long = document.querySelector(".long").value;
-    lat = document.querySelector(".lat").value;
+    lat = document.querySelector(".lat").value;}
     const url = `http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&appid=${key}`
     const promise = axios.get(url);
     promise.then(imprimirData)
@@ -29,9 +30,9 @@ document.querySelector(".all").style.backgroundImage = `url('./content/${load.da
 
 function busca(callback) { 
     navigator.geolocation.getCurrentPosition(function(position) {
-        const latitude = position.coords.latitude;
-        const longitude = position.coords.longitude;
-        callback(latitude, longitude);
+        lat = position.coords.latitude;
+        long = position.coords.longitude;
+        callback(lat, long);
         });
 }
 // function printLL(latitude, longitude){
