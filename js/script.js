@@ -1,7 +1,7 @@
 const key =  "b5419f679f98edf4ad4be4d55d04c894";
 let lat = 0;
 let long;
-function obterData(){
+function obterData(lat, long){
     long = document.querySelector(".long").value;
     lat = document.querySelector(".lat").value;
     const url = `http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&appid=${key}`
@@ -25,14 +25,16 @@ function imprimirData(load){
 `
 document.querySelector(".all").style.backgroundImage = `url('./content/${load.data.weather[0].description}.jpg')`;
 }
+
+
 function busca(callback) { 
     navigator.geolocation.getCurrentPosition(function(position) {
-        lat = position.coords.latitude;
-        long= position.coords.longitude;
-        callback();
+        const latitude = position.coords.latitude;
+        const longitude = position.coords.longitude;
+        callback(latitude, longitude);
         });
 }
-function printLL(){
-    console.log(lat, long);
-}
-busca(printLL);
+// function printLL(latitude, longitude){
+//     console.log(latitude);
+// }
+busca(obterData);
